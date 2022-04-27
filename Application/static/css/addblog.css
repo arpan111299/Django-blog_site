@@ -1,0 +1,27 @@
+.category-select{
+    width: 110px;
+}
+
+.addblog-text{
+    text-align: center;
+    color: green;
+    padding-bottom: 50px;
+}
+
+.addblog-title{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.addblog-fields{
+    text-align: center;
+}
+
+.image-upload{
+    width: 500px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+    align-content: center;
+}

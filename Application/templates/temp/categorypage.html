@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+Category Page | {{ catergories }}
+{% endblock %}
+
+
+{% block body %}
+<h1 class="heading"><b>Blogs: {{ catergories }}</b></h1>
+
+<ul>
+<div class="row row-cols-3">
+{% for post in category_posts %}
+{% if post.soft_delete == False %}
+<div class="col">
+    <div class="card-group">
+        <div class="card">
+            <a href="/detail/{{post.id}}"><img src="{{post.post_image.url}}" class="card-img-top" alt="..."></a>
+            <div class="card-body">
+                <a style=" text-decoration: none;" href="/detail/{{post.id}}">
+                    <h1 style="color: black;">{{post.title}}</h1>
+                </a></h5>
+                <a style=" text-decoration: none;" href="/category/{{post.category}}">
+                    <h3 class="card-category">{{post.category}}</h2>
+                </a>
+                <a style=" text-decoration: none;" href="/profile/{{post.user.username}}">
+                    <h2 class="card-profile-name">{{post.user.username}}</h2>
+                </a>
+                <h5 class="card-text">{{post.content|slice:"0:10"}}...<a href="/detail/{{post.id}}">read more</a></h5>
+                <p class="card-text"><small class="text-muted">Blog Created Date: {{post.publish_date}}</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+</ul>
+
+
+{% endblock %}

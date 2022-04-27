@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block body %}
+<div style="background-color: cyan;">
+<h1 class="profile-name">Profile Name: {{user.username}}</h1>
+<h3 style="text-align: center; color: blue;" class="profile-id">Profile Id: {{ user.id }}</h3>
+<hr style="padding: 3px; color: cyan;">
+</div>
+<h1 class="heading"><b>Blogs</b></h1>
+
+<ul>
+    <div class="row row-cols-3">
+        {% for post in user.post_set.all %}
+        {% if post.soft_delete == False %}
+        <div class="card-group">
+            <div class="card">
+                <img src="{{post.post_image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h1 class="card-title">Title: {{post.title}}</h1>
+
+                    <h3 class="card-category">Category:<a href="/category/{{post.category}}"> {{post.category}}</a></h3>
+
+                    <h5 class="card-text">{{post.content|slice:"0:10"}}...<a href="/detail/{{post.id}}">read more</a>
+                    </h5>
+                    <p class="card-text"><small class="text-muted">Blog Created Date: {{post.publish_date}}</small></p>
+
+                    {% if request.user == post.user or request.user.is_superuser %}
+                        <a href="{% url 'updateblog' post.pk %}"><button type="button" class="btn btn-primary">Edit
+                        Blog</button></a>
+                        <a href="{% url 'deleteblog' post.id %}"><button type="button" class="btn btn-danger">Delete
+                        Blog</button></a>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</ul>
+{% endblock %}

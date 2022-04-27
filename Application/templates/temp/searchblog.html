@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+Search Results
+{% endblock %}
+
+
+{% block body %}
+
+<h1 class="heading"><b>You Searched for: <i style="color:blue;">{{ searched }}</i></b></h1>
+
+<div class="row row-cols-3">
+
+    {% for blog in blogs %}
+    {% if blog.soft_delete == False %}
+    <div class="col">
+        <div class="card-group">
+            <div class="card">
+                <a href="detail/{{blog.id}}"><img src="{{blog.post_image.url}}" class="card-img-top" alt="..."></a>
+                <div class="card-body">
+                    <a style=" text-decoration: none;" href="detail/{{blog.id}}">
+                        <h1 style="color: black;">{{blog.title}}</h1>
+                    </a></h5>
+                    <a style=" text-decoration: none;" href="/category/{{blog.category}}">
+                        <h3 class="card-category">{{blog.category}}</h2>
+                    </a>
+                    <a style=" text-decoration: none;" href="/profile/{{blog.user.username}}">
+                        <h2 class="card-profile-name">{{blog.user.username}}</h2>
+                    </a>
+                    <h5 class="card-text">{{blog.content|slice:"0:10"}}...<a href="detail/{{blog.id}}">read more</a>
+                    </h5>
+                    <p class="card-text"><small class="text-muted">Blog Created Date: {{blog.publish_date}}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

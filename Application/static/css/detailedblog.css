@@ -1,0 +1,30 @@
+.details{
+    text-align: center;
+    padding-top: 50px;
+}
+
+.image{
+    height: 250px;
+    width: 500px;
+}
+
+.card-title{
+    padding: 25px;
+}
+
+.card-category{
+    padding: 25px;
+}
+
+.card-profile-name{
+    padding: 25px;
+}
+
+.card-text{
+    padding: 25px;
+}
+
+.button-options{
+    padding-top: 90px;
+    text-align: center;
+}

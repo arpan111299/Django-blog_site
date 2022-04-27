@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block body %}
+<h1 class="heading"><b>Blogs</b></h1>
+
+<div class="row row-cols-3">
+
+    {% for i in blogs %}
+    <div class="col">
+        <div class="card-group">
+            <div class="card">
+                <a href="detail/{{i.id}}"><img src="{{i.post_image.url}}" class="card-img-top" alt="..."></a>
+                <div class="card-body">
+                    <a style=" text-decoration: none;" href="detail/{{i.id}}">
+                        <h1 style="color: black;">{{i.title}}</h1>
+                    </a></h5>
+                    <a style=" text-decoration: none;" href="/category/{{i.category}}">
+                        <h3 class="card-category">{{i.category}}</h2>
+                    </a>
+                    <a style=" text-decoration: none;" href="/profile/{{i.user.username}}">
+                        <h2 class="card-profile-name">{{i.user.username}}</h2>
+                    </a>
+                    <h5 class="card-text">{{i.content|slice:"0:10"}}...<a href="detail/{{i.id}}">read more</a></h5>
+                    <p class="card-text"><small class="text-muted">Blog Created Date: {{i.publish_date}}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+<hr>
+
+<div class="pagination" style="padding-left: 800px; padding-top: 20px; padding-bottom: 10px;">
+
+    {% if blogs.has_previous %}
+    <div class="first_btn">
+        <button style="border-radius: 4px;  border: none; background-color: black;"><a
+                style="text-decoration: none; color: white;" href="?page=1">&laquo First &nbsp</a></button>
+    </div>
+    <div class="previous_btn" style="padding-left: 10px;">
+        <button style="border-radius: 4px;  border: none; background-color: black;"><a
+                style="text-decoration: none; color: white;" href="?page={{ blogs.previous_page_number }}">
+                Previous</a></button>
+    </div>
+    {% endif %}
+    <div class="page_status" style="padding-left: 10px; padding-right: 10px;">
+        Page {{ blogs.number }} of {{ blogs.paginator.num_pages }}
+    </div>
+
+    {% if blogs.has_next %}
+    <div class="next_btn" style="padding-right: 10px;">
+        <button style="border-radius: 4px;  border: none; background-color: black;"><a
+                style="text-decoration: none; color: white;" href="?page={{ blogs.next_page_number }}">Next</a></button>
+    </div>
+
+    <div class="last_btn">
+        <button style="border-radius: 4px;  border: none; background-color: black;"><a
+                style="text-decoration: none; color: white;" href="?page={{ blogs.paginator.num_pages }}">&nbsp Last
+                &raquo</a></button>
+    </div>
+
+    {% endif %}
+</div>
+
+
+{% endblock %}

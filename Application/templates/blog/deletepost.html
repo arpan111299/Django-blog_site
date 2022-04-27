@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Delete Blog
+{% endblock %}
+
+{% block body %}
+<h1 class="addblog-title">DELETE BLOG</h1>
+<br><br>
+<h3>Delete: {{post.title}}</h3>
+<form action="" method="POST" enctype="multipart/form-data" style="text-align: center;">
+    {% csrf_token %}
+    <strong style="color: red;">Are you sure you want ot delete this blog?</strong>
+    <button type="submit" class="btn btn-success">Delete</button>
+</form>
+{% endblock %}

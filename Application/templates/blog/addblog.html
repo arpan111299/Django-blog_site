@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add Blog
+{% endblock %}
+
+{% block body %}
+<div style="background-color:grey ;">
+    <h1 class="addblog-title">ADD BLOG</h1>
+    <br><br>
+    <form action="" method="POST" enctype="multipart/form-data" style="text-align: center;">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <!-- <div class="row">
+        <div class="col-4"></div>
+        <div class="col">
+
+            <p class="addblog-text">Create Your Own Idea & Show Your Creativity To The World.</p>
+
+            <div class="addblog-fields">
+                <div class="mb-3">
+                    <select class=" category-select" name="category" required aria-label="select example">
+                        <option value="">Category</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Music">Music</option>
+                        <option value="Acting">Acting</option>
+                        <option value="Games">Games</option>
+                        <option value="Motivational">Motivational</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <div class="invalid-feedback">Example invalid select feedback</div>
+                </div>
+                <div class="image-upload mx-5 py-2">
+                    <div class="mb-3">
+                        <p class="text-primary">Enter valid image file.</p>
+                        <input type="file" name="postimage" class="form-control" aria-label="file example" required>
+                        <div class="invalid-feedback">Example invalid form file feedback</div>
+                    </div>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="title" name="title" class="form-control" id="floatingInput" placeholder="Title">
+                    <label for="floatingInput">Title</label>
+                </div>
+
+                <div class="form-floating">
+                    <textarea class="form-control" name="content" placeholder="Leave a comment here" id="floatingTextarea2"
+                        style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Description:</label>
+                </div>
+
+                <button type="submit" class="btn btn-success mt-3">Success</button>
+
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div> -->
+    </form>
+</div>
+{% endblock %}

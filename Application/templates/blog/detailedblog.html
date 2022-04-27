@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Detailed View
+{% endblock %}
+
+{% block body %}
+
+<div class="details">
+    <img class="image" src="{{post.post_image.url}}" alt="...">
+    <h1 class="card-title">Title: <b>{{post.title}}</b></h1>
+    <h3 class="card-category">Category: <a href="">{{post.category}}</a></h3>
+    <h3 class="card-profile-name">Profile Name: <a href="/profile/{{post.user.username}}">{{post.user}} </a></h3>
+    <h5 class="card-text">{{post.content}}</h5>
+    <hr><br>
+    {% if user == post.user or request.user.is_superuser %}
+        <a href="{% url 'updateblog' post.pk %}"><button type="button" class="btn btn-primary">Edit
+        Blog</button></a>
+        <a href="{% url 'deleteblog' post.pk %}"><button type="button" class="btn btn-danger">Delete
+        Blog</button></a>
+    {% endif %}
+</div>
+
+
+
+{% endblock %}
